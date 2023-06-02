@@ -27,6 +27,20 @@ teta_aux(1:9) = 10^(-6); // Initializing the while loop
 loadmatfile('-ascii','buck_id.dat');    
 loadmatfile('-ascii','buck_val.dat');    
 
+// Managing data
+len_data_id = size(buck_id,1)/3;
+c1_id = buck_id(1:len_data_id,1);
+c2_id = buck_id(len_data_id+1:2*len_data_id,1);
+c3_id = buck_id(2*len_data_id+1:$,1);
+buck_id = [];
+buck_id = [c1_id, c2_id, c3_id];
+len_data_val = size(buck_val,1)/3;
+c1_val = buck_val(1:len_data_val,1);
+c2_val = buck_val(len_data_val+1:2*len_data_val,1);
+c3_val = buck_val(2*len_data_val+1:$,1);
+buck_val = [];
+buck_val = [c1_val, c2_val, c3_val];
+
 // Static curve of Buck Converter
 // v0 = 4/3vd - (vd/3)*u, where vd = 24
 
